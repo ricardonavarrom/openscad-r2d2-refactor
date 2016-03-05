@@ -2,22 +2,26 @@ TRANSLATION_NEUTRAL_ELEMENT = 0;
 SCALATION_NEUTRAL_ELEMENT = 1;
 ROTATION_NEUTRAL_ELEMENT = 0;
 
+BODY_RADIUS = 10;
+BODY_ROTATION = [ROTATION_NEUTRAL_ELEMENT, 18, ROTATION_NEUTRAL_ELEMENT];
+
 module head() {
-    radius = 10;
     translation = [2.47, TRANSLATION_NEUTRAL_ELEMENT, 31];
-    rotation = [ROTATION_NEUTRAL_ELEMENT, 18, ROTATION_NEUTRAL_ELEMENT];
     scalation = [SCALATION_NEUTRAL_ELEMENT, SCALATION_NEUTRAL_ELEMENT, 1.1];
     
     translate (translation) 
-        rotate(rotation) 
+        rotate(BODY_ROTATION) 
             scale(scalation) 
-                sphere(radius);
+                sphere(BODY_RADIUS);
 }
 
 module trunk() {
-    translate ([-5, 0, 8]) 
-        rotate([0, 18, 0]) 
-            cylinder(25, 10, 10);
+    height = 25;
+    translation = [-5, TRANSLATION_NEUTRAL_ELEMENT, 8];
+    
+    translate (translation) 
+        rotate(BODY_ROTATION) 
+            cylinder(height, BODY_RADIUS, BODY_RADIUS);
 }
 
 module waist() {
