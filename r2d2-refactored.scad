@@ -73,8 +73,11 @@ module principalCameraLens() {
 }
 
 module principalCamera() {
-    scale ([1.1, 1.1, 1.1]) 
-        translate ([-0.5, 0, 3]) 
+    scalation = [1.1, 1.1, 1.1];
+    translation = [-0.5, TRANSLATION_NEUTRAL_ELEMENT, 3];
+    
+    scale (scalation) 
+        translate (translation) 
             union() 
     {
         principalCameraBody();
