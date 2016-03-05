@@ -53,15 +53,19 @@ module principalCameraBody() {
             cube(4);
 }
 
+module principalCameraLens() {
+    translate ([-3.4, 0, 39]) 
+        rotate ([0, 45, 0]) 
+            sphere(1.9);
+}
+
 module principalCamera() {
     scale ([1.1, 1.1, 1.1]) 
         translate ([-0.5, 0, 3]) 
             union() 
     {
         principalCameraBody();
-        translate ([-3.4, 0, 39]) 
-            rotate ([0, 45, 0]) 
-                sphere(1.9);
+        principalCameraLens();
     }
 }
 
