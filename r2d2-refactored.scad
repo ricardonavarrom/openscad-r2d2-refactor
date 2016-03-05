@@ -112,7 +112,7 @@ module secondaryCamera() {
             }
 }
 
-module frontFoot() {
+module frontLeg() {
     scale([1.41, 1.41, 1.41]) 
         translate([-11.2, -4.6, 0]) 
             union() {
@@ -135,7 +135,9 @@ module frontFoot() {
                             cube([9, 1.5, 1]);
                     }	
                 }
-                translate([5, 4.07, 1]) rotate([0, -70, 0]) cube([6, 1.5, 2.5]);
+                translate([5, 4.07, 1]) 
+                    rotate([0, -70, 0]) 
+                        cube([6, 1.5, 2.5]);
             }
 }
 
@@ -143,7 +145,7 @@ module r2d2() {
     body();
     principalCamera();
     secondaryCamera();
-    frontFoot();
+    frontLeg();
     
     
     union() {
@@ -246,6 +248,7 @@ module r2d2() {
                         rotate([0, 80, 0]) 
                             cube([6, 1.5, 2.5]);
                 }
+
     }
     
     
