@@ -35,8 +35,11 @@ module waist() {
 }
 
 module body() {
-    scale ([1.15, 1.15, 1.15]) 
-        translate ([0, 0, 1.5]) 
+    scalation = [1.15, 1.15, 1.15];
+    translation = [TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT, 1.5];
+    
+    scale (scalation) 
+        translate (translation) 
             union() {
                 head();
                 trunk();
