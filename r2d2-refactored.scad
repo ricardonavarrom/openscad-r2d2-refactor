@@ -47,15 +47,25 @@ module body() {
     } 
 }
 
+module principalCamera() {
+    scale ([1.1, 1.1, 1.1]) 
+        translate ([-0.5, 0, 3]) 
+            union() 
+    {
+        translate ([-5.5, -2, 38]) 
+            rotate ([-0.5, 45, 0]) 
+                cube(4);
+        translate ([-3.4, 0, 39]) 
+            rotate ([0, 45, 0]) 
+                sphere(1.9);
+    }
+}
+
 module r2d2() {
     body();
+    principalCamera();
     
-    //CAMERA
-    scale ([1.1,1.1,1.1]) translate ([-0.5,0,3]) union()
-    {
-        translate ([-5.5,-2,38]) rotate ([-0.5,45,0]) cube(4);
-        translate ([-3.4,0,39]) rotate ([0,45,0]) sphere(1.9);
-    }
+
     //CAMERA 2
     translate ([-6,-5,43]) rotate([0,20,25]) union()
     {
