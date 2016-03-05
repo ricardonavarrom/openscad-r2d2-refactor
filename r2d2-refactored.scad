@@ -14,7 +14,7 @@ module head() {
     translation = [2.47, TRANSLATION_NEUTRAL_ELEMENT, 31];
     scalation = [SCALATION_NEUTRAL_ELEMENT, SCALATION_NEUTRAL_ELEMENT, 1.1];
     
-    translate (translation) 
+    translate(translation) 
         rotate(BODY_ROTATION) 
             scale(scalation) 
                 sphere(BODY_RADIUS);
@@ -24,7 +24,7 @@ module trunk() {
     height = 25;
     translation = [-5, TRANSLATION_NEUTRAL_ELEMENT, 8];
     
-    translate (translation) 
+    translate(translation) 
         rotate(BODY_ROTATION) 
             cylinder(height, BODY_RADIUS, BODY_RADIUS);
 }
@@ -34,8 +34,8 @@ module waist() {
     bottomRadius = 7.5;
     translation = [-5.9, TRANSLATION_NEUTRAL_ELEMENT, 5.3];
     
-    translate (translation) 
-        rotate (BODY_ROTATION) 
+    translate(translation) 
+        rotate(BODY_ROTATION) 
             cylinder(height, bottomRadius, BODY_RADIUS);
 }
 
@@ -43,8 +43,8 @@ module body() {
     scalation = [1.15, 1.15, 1.15];
     translation = [TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT, 1.5];
     
-    scale (scalation) 
-        translate (translation) 
+    scale(scalation) 
+        translate(translation) 
             union() {
                 head();
                 trunk();
@@ -57,8 +57,8 @@ module principalCameraBody() {
     translation = [-5.5, changeSign(half(size)), 38];
     rotation = [-0.5, half(QUARTER_ROTATION), ROTATION_NEUTRAL_ELEMENT];
     
-    translate (translation) 
-        rotate (rotation) 
+    translate(translation) 
+        rotate(rotation) 
             cube(size);
 }
 
@@ -67,8 +67,8 @@ module principalCameraLens() {
     translation = [-3.4, TRANSLATION_NEUTRAL_ELEMENT, 39];
     rotation = [ROTATION_NEUTRAL_ELEMENT, half(QUARTER_ROTATION), ROTATION_NEUTRAL_ELEMENT];
     
-    translate (translation) 
-        rotate (rotation) 
+    translate(translation) 
+        rotate(rotation) 
             sphere(radius);
 }
 
@@ -76,8 +76,8 @@ module principalCamera() {
     scalation = [1.1, 1.1, 1.1];
     translation = [-0.5, TRANSLATION_NEUTRAL_ELEMENT, 3];
     
-    scale (scalation) 
-        translate (translation) 
+    scale(scalation) 
+        translate(translation) 
             union() 
     {
         principalCameraBody();
@@ -86,15 +86,23 @@ module principalCamera() {
 }
 
 module secondaryCameraBody() {
-    scale ([1, 1, 0.8]) 
+    scale([1, 1, 0.8]) 
         sphere(1.8);
 }
 
+module secondaryCameraLens() {
+    translate([-1, 0, 0]) 
+        rotate([0, -90, 0]) 
+            cylinder(1, 0.8, 0.8);
+}
+
 module secondaryCamera() {
-    translate ([-6,-5,43]) rotate([0,20,25]) union()
+    translate([-6, -5, 43])
+        rotate([0, 20, 25]) 
+            union()
     {
         secondaryCameraBody();
-        translate ([-1,0,0]) rotate ([0,-90,0]) cylinder (1,0.8,0.8);
+        secondaryCameraLens();
     }
 }
 
