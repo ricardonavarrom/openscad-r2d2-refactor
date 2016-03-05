@@ -11,13 +11,19 @@ module trunk() {
             cylinder(25,10,10);
 }
 
+module waist() {
+    translate ([-5.9,0,5.3]) 
+        rotate ([0,18,0]) 
+            cylinder(3.2,7.5,10);
+}
+
 module body() {
     scale ([1.15,1.15,1.15]) 
         translate ([0,0,1.5]) 
             union() {
                 head();
                 trunk();
-                translate ([-5.9,0,5.3]) rotate ([0,18,0]) cylinder(3.2,7.5,10);
+                waist();
     } 
 }
 
