@@ -85,10 +85,15 @@ module principalCamera() {
     }
 }
 
+module secondaryCameraBody() {
+    scale ([1, 1, 0.8]) 
+        sphere(1.8);
+}
+
 module secondaryCamera() {
     translate ([-6,-5,43]) rotate([0,20,25]) union()
     {
-        scale ([1,1,0.8]) sphere(1.8);
+        secondaryCameraBody();
         translate ([-1,0,0]) rotate ([0,-90,0]) cylinder (1,0.8,0.8);
     }
 }
