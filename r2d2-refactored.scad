@@ -1,9 +1,14 @@
+module head() {
+    translate ([2.47,0,31]) rotate([0,18,0]) scale([1,1,1.1]) sphere(10);
+}
+
 module body() {
-    scale ([1.15,1.15,1.15]) translate ([0,0,1.5]) union()
-    {
-        translate ([-5,0,8]) rotate([0,18,0]) cylinder(25,10,10);
-        translate ([2.47,0,31]) rotate([0,18,0]) scale([1,1,1.1]) sphere(10);
-        translate ([-5.9,0,5.3]) rotate ([0,18,0]) cylinder(3.2,7.5,10);
+    scale ([1.15,1.15,1.15]) 
+        translate ([0,0,1.5]) 
+            union() {
+                translate ([-5,0,8]) rotate([0,18,0]) cylinder(25,10,10);
+                head();
+                translate ([-5.9,0,5.3]) rotate ([0,18,0]) cylinder(3.2,7.5,10);
     } 
 }
 
