@@ -25,9 +25,13 @@ module trunk() {
 }
 
 module waist() {
-    translate ([-5.9, 0, 5.3]) 
-        rotate ([0, 18, 0]) 
-            cylinder(3.2, 7.5, 10);
+    height = 3.2;
+    bottomRadius = 7.5;
+    translation = [-5.9, TRANSLATION_NEUTRAL_ELEMENT, 5.3];
+    
+    translate (translation) 
+        rotate (BODY_ROTATION) 
+            cylinder(height, bottomRadius, BODY_RADIUS);
 }
 
 module body() {
