@@ -3,52 +3,51 @@ SCALATION_NEUTRAL_ELEMENT = 1;
 ROTATION_NEUTRAL_ELEMENT = 0;
 QUARTER_ROTATION = 90;
 
-BODY_RADIUS = 10;
-BODY_ROTATION = [ROTATION_NEUTRAL_ELEMENT, 18, ROTATION_NEUTRAL_ELEMENT];
-
 function half(value) = value / 2;
 
 function changeSign(value) = value * -1;
 
-module head() {
+module head(radius, rotation) {
     translation = [2.47, TRANSLATION_NEUTRAL_ELEMENT, 31];
     scalation = [SCALATION_NEUTRAL_ELEMENT, SCALATION_NEUTRAL_ELEMENT, 1.1];
     
     translate(translation) 
-        rotate(BODY_ROTATION) 
+        rotate(rotation) 
             scale(scalation) 
-                sphere(BODY_RADIUS);
+                sphere(radius);
 }
 
-module trunk() {
+module trunk(radius, rotation) {
     height = 25;
     translation = [-5, TRANSLATION_NEUTRAL_ELEMENT, 8];
     
     translate(translation) 
-        rotate(BODY_ROTATION) 
-            cylinder(height, BODY_RADIUS, BODY_RADIUS);
+        rotate(rotation) 
+            cylinder(height, radius, radius);
 }
 
-module waist() {
+module waist(radius, rotation) {
     height = 3.2;
     bottomRadius = 7.5;
     translation = [-5.9, TRANSLATION_NEUTRAL_ELEMENT, 5.3];
     
     translate(translation) 
-        rotate(BODY_ROTATION) 
-            cylinder(height, bottomRadius, BODY_RADIUS);
+        rotate(rotation) 
+            cylinder(height, bottomRadius, radius);
 }
 
 module body() {
+    radius = 10;
+    rotation = [ROTATION_NEUTRAL_ELEMENT, 18, ROTATION_NEUTRAL_ELEMENT];
     scalation = [1.15, 1.15, 1.15];
     translation = [TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT, 1.5];
     
     scale(scalation) 
         translate(translation) 
             union() {
-                head();
-                trunk();
-                waist();
+                head(radius, rotation);
+                trunk(radius, rotation);
+                waist(radius, rotation);
             } 
 }
 
