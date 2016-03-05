@@ -1,6 +1,4 @@
 module body() {
-   //%translate([-25,-25,0]) cube(50);
-    //BODY
     scale ([1.15,1.15,1.15]) translate ([0,0,1.5]) union()
     {
         translate ([-5,0,8]) rotate([0,18,0]) cylinder(25,10,10);
