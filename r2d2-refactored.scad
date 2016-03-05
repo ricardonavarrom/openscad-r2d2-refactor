@@ -85,17 +85,19 @@ module principalCamera() {
     }
 }
 
-module r2d2() {
-    body();
-    principalCamera();
-    
-
-    //CAMERA 2
+module secondaryCamera() {
     translate ([-6,-5,43]) rotate([0,20,25]) union()
     {
         scale ([1,1,0.8]) sphere(1.8);
         translate ([-1,0,0]) rotate ([0,-90,0]) cylinder (1,0.8,0.8);
     }
+}
+
+module r2d2() {
+    body();
+    principalCamera();
+    secondaryCamera();
+    
     //FRONT FOOT
     scale ([1.41,1.41,1.41]) translate ([-11.2,-4.6,0]) union()
     {
