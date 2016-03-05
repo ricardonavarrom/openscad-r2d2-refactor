@@ -86,8 +86,11 @@ module principalCamera() {
 }
 
 module secondaryCameraBody() {
-    scale([1, 1, 0.8]) 
-        sphere(1.8);
+    radius = 1.8;
+    scalation = [SCALATION_NEUTRAL_ELEMENT, SCALATION_NEUTRAL_ELEMENT, 0.8];
+    
+    scale(scalation) 
+        sphere(radius);
 }
 
 module secondaryCameraLens() {
