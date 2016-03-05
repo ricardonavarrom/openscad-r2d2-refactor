@@ -133,14 +133,18 @@ module foot() {
     }
 }
 
+module thigh() {
+    cube([6, 1.5, 2.5]);
+}
+
 module frontLeg() {
     scale([1.41, 1.41, 1.41]) 
         translate([-11.2, -4.6, 0]) 
             union() {
-                foot();
                 translate([5, 4.07, 1]) 
                     rotate([0, -70, 0]) 
-                        cube([6, 1.5, 2.5]);
+                        thigh();
+                foot();
             }
 }
 
