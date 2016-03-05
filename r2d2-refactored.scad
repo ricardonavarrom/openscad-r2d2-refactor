@@ -47,14 +47,18 @@ module body() {
     } 
 }
 
+module principalCameraBody() {
+    translate ([-5.5, -2, 38]) 
+        rotate ([-0.5, 45, 0]) 
+            cube(4);
+}
+
 module principalCamera() {
     scale ([1.1, 1.1, 1.1]) 
         translate ([-0.5, 0, 3]) 
             union() 
     {
-        translate ([-5.5, -2, 38]) 
-            rotate ([-0.5, 45, 0]) 
-                cube(4);
+        principalCameraBody();
         translate ([-3.4, 0, 39]) 
             rotate ([0, 45, 0]) 
                 sphere(1.9);
