@@ -246,25 +246,7 @@ module rightLeg() {
     }
 }
 
-module r2d2() {
-    body();
-    principalCamera();
-    secondaryCamera();
-    frontLeg();
-    rightLeg();
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+module leftLeg() {
     translate([0, 0, 0]) 
         rotate([0, 0, 180]) 
             union() {
@@ -367,8 +349,13 @@ module r2d2() {
             }
 }
 
-
-
-
+module r2d2() {
+    body();
+    principalCamera();
+    secondaryCamera();
+    frontLeg();
+    rightLeg();
+    leftLeg();
+}
 
 r2d2();
