@@ -5,6 +5,8 @@ ROTATION_NEUTRAL_ELEMENT = 0;
 BODY_RADIUS = 10;
 BODY_ROTATION = [ROTATION_NEUTRAL_ELEMENT, 18, ROTATION_NEUTRAL_ELEMENT];
 
+function half(value) = value / 2;
+
 module head() {
     translation = [2.47, TRANSLATION_NEUTRAL_ELEMENT, 31];
     scalation = [SCALATION_NEUTRAL_ELEMENT, SCALATION_NEUTRAL_ELEMENT, 1.1];
@@ -48,9 +50,13 @@ module body() {
 }
 
 module principalCameraBody() {
-    translate ([-5.5, -2, 38]) 
-        rotate ([-0.5, 45, 0]) 
-            cube(4);
+    size = 4;
+    translation = [-5.5, -half(size), 38];
+    rotation = [-0.5, 45, ROTATION_NEUTRAL_ELEMENT];
+    
+    translate (translation) 
+        rotate (rotation) 
+            cube(size);
 }
 
 module principalCameraLens() {
