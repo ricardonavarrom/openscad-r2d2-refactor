@@ -225,31 +225,12 @@ module rightLeg() {
         scale([1.41, 1.41, 1.41]) 
             translate([-4, 4, 0]) 
                 union() {
-                    scale([1.2, 1.2, 1.2]) 
-                        difference() {
-                            cube([8, 8, 4]);
-                            union() {
-                                translate([-1, -8, 0]) 
-                                    rotate([-20, 0, 0]) 
-                                        cube([10, 9, 9]);
-                                translate([-1, 8, 0]) 
-                                    rotate([20, 0, 0]) 
-                                        cube([10, 9, 9]);
-                                translate([-10, 0, 0]) 
-                                    rotate([0, 20, 0]) 
-                                        cube([10, 9, 9]);
-                                translate([8, 0, 0]) 
-                                    rotate([0, -20, 0]) 
-                                        cube([10, 9, 9]);
-                                translate([0, 4.1, 3.3]) 
-                                    cube([9, 1.5, 1]);
-                            }	
-                        }
                     translate([3.5, 5, 7]) 
                         rotate([0, 80, 0]) 
-                            cube([6, 1.5, 2.5]);
+                            thigh();
+                    scale([1.2, 1.2, 1.2]) 
+                        foot();
                 }
-
     }
 }
 
@@ -329,29 +310,11 @@ module leftLeg() {
                 scale([1.41, 1.41, 1.41]) 
                     translate([-4, 4, 0]) 
                         union() {
-                            scale([1.2, 1.2, 1.2])
-                                difference() {
-                                    cube([8, 8, 4]);
-                                    union() {
-                                        translate([-1, -8, 0]) 
-                                            rotate([-20, 0,0]) 
-                                                cube([10, 9, 9]);
-                                        translate([-1, 8, 0]) 
-                                            rotate([20, 0, 0]) 
-                                                cube([10, 9, 9]);
-                                        translate([-10, 0, 0]) 
-                                            rotate([0, 20, 0]) 
-                                                cube([10, 9, 9]);
-                                        translate([8, 0, 0]) 
-                                            rotate([0, -20, 0]) 
-                                                cube([10, 9, 9]);
-                                        translate([0, 4.1, 3.3]) 
-                                            cube([9, 1.5, 1]);
-                                    }	
-                                }
                             translate([3.5, 5, 7]) 
                                 rotate([0, 80, 0])
-                                    cube([6, 1.5, 2.5]);
+                                    thigh();
+                            scale([1.2, 1.2, 1.2])
+                                foot();
                         }
             }
 }
