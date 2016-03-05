@@ -94,9 +94,14 @@ module secondaryCameraBody() {
 }
 
 module secondaryCameraLens() {
-    translate([-1, 0, 0]) 
-        rotate([0, -90, 0]) 
-            cylinder(1, 0.8, 0.8);
+    height = 1;
+    radius = 0.8;
+    translation = [-1, TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT];
+    rotation = [ROTATION_NEUTRAL_ELEMENT, changeSign(QUARTER_ROTATION), ROTATION_NEUTRAL_ELEMENT];
+    
+    translate(translation) 
+        rotate(rotation) 
+            cylinder(height, radius, radius);
 }
 
 module secondaryCamera() {
