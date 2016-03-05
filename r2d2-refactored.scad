@@ -114,12 +114,7 @@ module secondaryCamera() {
     }
 }
 
-module r2d2() {
-    body();
-    principalCamera();
-    secondaryCamera();
-    
-    //FRONT FOOT
+module frontFoot() {
     scale ([1.41,1.41,1.41]) translate ([-11.2,-4.6,0]) union()
     {
         difference()
@@ -136,6 +131,15 @@ module r2d2() {
         }
         translate ([5,4.07,1]) rotate ([0,-70,0]) cube([6,1.5,2.5]);
     }
+}
+
+module r2d2() {
+    body();
+    principalCamera();
+    secondaryCamera();
+    frontFoot();
+    
+    
     union()
     {
     //SIDE LEG #1
