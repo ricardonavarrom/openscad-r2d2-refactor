@@ -111,29 +111,33 @@ module secondaryCamera() {
             }
 }
 
+module foot() {
+    difference() {
+        cube([8, 8, 4]);
+        union() {
+            translate([-1, -8, 0])
+                rotate([-20, 0, 0])
+                    cube([10, 9, 9]);
+            translate([-1, 8, 0])
+                rotate([20, 0, 0]) 
+                    cube([10, 9, 9]);
+            translate([-10, 0, 0])
+                rotate([0, 20, 0])
+                    cube([10, 9, 9]);
+            translate([8, 0, 0])
+                rotate([0,- 20, 0]) 
+                    cube([10, 9, 9]);
+            translate([0, 4.1, 3.3])
+                cube([9, 1.5, 1]);
+        }	
+    }
+}
+
 module frontLeg() {
     scale([1.41, 1.41, 1.41]) 
         translate([-11.2, -4.6, 0]) 
             union() {
-                difference() {
-                    cube([8, 8, 4]);
-                    union() {
-                        translate([-1, -8, 0])
-                            rotate([-20, 0, 0])
-                                cube([10, 9, 9]);
-                        translate([-1, 8, 0])
-                            rotate([20, 0, 0]) 
-                                cube([10, 9, 9]);
-                        translate([-10, 0, 0])
-                            rotate([0, 20, 0])
-                                cube([10, 9, 9]);
-                        translate([8, 0, 0])
-                            rotate([0,- 20, 0]) 
-                                cube([10, 9, 9]);
-                        translate([0, 4.1, 3.3])
-                            cube([9, 1.5, 1]);
-                    }	
-                }
+                foot();
                 translate([5, 4.07, 1]) 
                     rotate([0, -70, 0]) 
                         cube([6, 1.5, 2.5]);
