@@ -141,13 +141,7 @@ module frontLeg() {
             }
 }
 
-module r2d2() {
-    body();
-    principalCamera();
-    secondaryCamera();
-    frontLeg();
-    
-    
+module rightLeg() {
     union() {
     //SIDE LEG #1
         
@@ -250,6 +244,17 @@ module r2d2() {
                 }
 
     }
+}
+
+module r2d2() {
+    body();
+    principalCamera();
+    secondaryCamera();
+    frontLeg();
+    rightLeg();
+    
+    
+    
     
     
     
