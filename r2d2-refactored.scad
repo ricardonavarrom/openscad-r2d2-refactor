@@ -120,32 +120,36 @@ module ankle() {
     cube(dimensions);
 }
 
+module footDifferenceCubes(shoeSize) {
+    union() {
+        translate([-1, changeSign(shoeSize), TRANSLATION_NEUTRAL_ELEMENT])
+            rotate([-20, ROTATION_NEUTRAL_ELEMENT, ROTATION_NEUTRAL_ELEMENT])
+                cube([10, 9, 9]);
+        
+        translate([-1, shoeSize, TRANSLATION_NEUTRAL_ELEMENT])
+            rotate([20, ROTATION_NEUTRAL_ELEMENT, ROTATION_NEUTRAL_ELEMENT]) 
+                cube([10, 9, 9]);
+        
+        translate([-10, TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT])
+            rotate([ROTATION_NEUTRAL_ELEMENT, 20, ROTATION_NEUTRAL_ELEMENT])
+                cube([10, 9, 9]);
+        
+        translate([shoeSize, TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT])
+            rotate([ROTATION_NEUTRAL_ELEMENT,- 20, ROTATION_NEUTRAL_ELEMENT]) 
+                cube([10, 9, 9]);
+        
+        translate([TRANSLATION_NEUTRAL_ELEMENT, 4.1, 3.3])
+            cube([9, 1.5, 1]);
+    }
+}
+
 module foot() {
     shoeSize = 8;
     dimensions = [shoeSize, shoeSize, half(shoeSize)];
     
     difference() {
         cube(dimensions);
-        union() {
-            translate([-1, changeSign(shoeSize), TRANSLATION_NEUTRAL_ELEMENT])
-                rotate([-20, ROTATION_NEUTRAL_ELEMENT, ROTATION_NEUTRAL_ELEMENT])
-                    cube([10, 9, 9]);
-            
-            translate([-1, shoeSize, TRANSLATION_NEUTRAL_ELEMENT])
-                rotate([20, ROTATION_NEUTRAL_ELEMENT, ROTATION_NEUTRAL_ELEMENT]) 
-                    cube([10, 9, 9]);
-            
-            translate([-10, TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT])
-                rotate([ROTATION_NEUTRAL_ELEMENT, 20, ROTATION_NEUTRAL_ELEMENT])
-                    cube([10, 9, 9]);
-            
-            translate([shoeSize, TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT])
-                rotate([ROTATION_NEUTRAL_ELEMENT,- 20, ROTATION_NEUTRAL_ELEMENT]) 
-                    cube([10, 9, 9]);
-            
-            translate([TRANSLATION_NEUTRAL_ELEMENT, 4.1, 3.3])
-                cube([9, 1.5, 1]);
-        }	
+        footDifferenceCubes(shoeSize);
     }
 }
 
