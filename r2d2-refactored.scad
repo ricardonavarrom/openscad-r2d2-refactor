@@ -133,7 +133,7 @@ module foot() {
     }
 }
 
-module thigh() {
+module ankle() {
     cube([6, 1.5, 2.5]);
 }
 
@@ -143,7 +143,7 @@ module frontLeg() {
             union() {
                 translate([5, 4.07, 1]) 
                     rotate([0, -70, 0]) 
-                        thigh();
+                        ankle();
                 foot();
             }
 }
@@ -227,7 +227,7 @@ module rightLeg() {
                 union() {
                     translate([3.5, 5, 7]) 
                         rotate([0, 80, 0]) 
-                            thigh();
+                            ankle();
                     scale([1.2, 1.2, 1.2]) 
                         foot();
                 }
@@ -312,7 +312,7 @@ module leftLeg() {
                         union() {
                             translate([3.5, 5, 7]) 
                                 rotate([0, 80, 0])
-                                    thigh();
+                                    ankle();
                             scale([1.2, 1.2, 1.2])
                                 foot();
                         }
