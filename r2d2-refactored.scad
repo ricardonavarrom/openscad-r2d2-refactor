@@ -2,6 +2,7 @@ TRANSLATION_NEUTRAL_ELEMENT = 0;
 SCALATION_NEUTRAL_ELEMENT = 1;
 ROTATION_NEUTRAL_ELEMENT = 0;
 QUARTER_ROTATION = 90;
+HALF_ROTATION = 180;
 
 function half(value) = value / 2;
 
@@ -240,6 +241,13 @@ module outsideLeg() {
                 }
 }
 
+module lateralFoot() {
+    scalation = [1.2, 1.2, 1.2];
+    
+    scale(scalation) 
+        foot();
+}
+
 module rightLeg() {
     union() {
         insideLeg();
@@ -252,30 +260,29 @@ module rightLeg() {
                         rotate([0, 80, 0]) 
                             ankle();
                     
-                    scale([1.2, 1.2, 1.2]) 
-                        foot();
+                    lateralFoot();
                 }
     }
 }
 
 module leftLeg() {
-    translate([0, 0, 0]) 
-        rotate([0, 0, 180]) 
-            union() {
-                insideLeg();
-                outsideLeg();
-        
-                scale([1.41, 1.41, 1.41]) 
-                    translate([-4, 4, 0]) 
-                        union() {
-                            translate([3.5, 5, 7]) 
-                                rotate([0, 80, 0])
-                                    ankle();
-                            
-                            scale([1.2, 1.2, 1.2])
-                                foot();
-                        }
-            }
+    rotation = [ROTATION_NEUTRAL_ELEMENT, ROTATION_NEUTRAL_ELEMENT, HALF_ROTATION];
+    
+    rotate(rotation) 
+        union() {
+            insideLeg();
+            outsideLeg();
+    
+            scale([1.41, 1.41, 1.41]) 
+                translate([-4, 4, 0]) 
+                    union() {
+                        translate([3.5, 5, 7]) 
+                            rotate([0, 80, 0])
+                                ankle();
+                        
+                        lateralFoot();
+                    }
+        }
 }
 
 module r2d2() {
