@@ -40,21 +40,11 @@ module foot() {
     }
 }
 
-module frontLeg() {
-    scalation = [1.41, 1.41, 1.41];
-    translation = [-11.2, -4.6, TRANSLATION_NEUTRAL_ELEMENT];
-    ankleTranslation = [5, 4.07, 1];
-    ankleRotation = [ROTATION_NEUTRAL_ELEMENT, -70, ROTATION_NEUTRAL_ELEMENT];
+module lateralLegFoot() {
+    scalation = [1.2, 1.2, 1.2];
     
     scale(scalation) 
-        translate(translation) 
-            union() {
-                translate(ankleTranslation) 
-                    rotate(ankleRotation) 
-                        ankle();
-                
-                foot();
-            }
+        foot();
 }
 
 module hip() {
@@ -91,6 +81,15 @@ module hip() {
         }
 }
 
+module lateralLegAnkle() {
+    translation = [3.5, 5, 7];
+    rotation = [ROTATION_NEUTRAL_ELEMENT, 80, ROTATION_NEUTRAL_ELEMENT];
+    
+    translate(translation) 
+        rotate(rotation) 
+            ankle();
+}
+
 module perforatedHip() {
     cylinderHeight = 4;
     perforationRotation = [QUARTER_ROTATION, -5, ROTATION_NEUTRAL_ELEMENT];
@@ -107,13 +106,16 @@ module perforatedHip() {
     }
 }
 
-module lateralLegHipGroup() {
-    hipTranslation = [TRANSLATION_NEUTRAL_ELEMENT, 12, 27];
+module noPerforatedHip() {
+    translation = [TRANSLATION_NEUTRAL_ELEMENT, 12, 27];
     
-    perforatedHip();
-    
-    translate(hipTranslation) 
+    translate(translation) 
         hip();
+}
+
+module lateralLegHip() {
+    perforatedHip();
+    noPerforatedHip();
 }
 
 module lateralLegBody(rotation) {
@@ -157,22 +159,6 @@ module lateralLegKnee() {
                 }
 }
 
-module lateralLegFoot() {
-    scalation = [1.2, 1.2, 1.2];
-    
-    scale(scalation) 
-        foot();
-}
-
-module lateralLegAnkle() {
-    translation = [3.5, 5, 7];
-    rotation = [ROTATION_NEUTRAL_ELEMENT, 80, ROTATION_NEUTRAL_ELEMENT];
-    
-    translate(translation) 
-        rotate(rotation) 
-            ankle();
-}
-
 module lateralLegBottom() {
     scalation = [1.41, 1.41, 1.41];
     translation = [-4, 4, TRANSLATION_NEUTRAL_ELEMENT];
@@ -185,14 +171,10 @@ module lateralLegBottom() {
             }
 }
 
-module lateralLegTop() {
-    lateralLegHipGroup();
-    lateralLegBody();
-}
-
 module lateralLeg() {
     union() {
-        lateralLegTop(); 
+        lateralLegHip();
+        lateralLegBody(); 
         lateralLegKnee(); 
         lateralLegBottom();
     }
@@ -207,4 +189,21 @@ module leftLeg() {
     
     rotate(rotation) 
         lateralLeg();
+}
+
+module frontLeg() {
+    scalation = [1.41, 1.41, 1.41];
+    translation = [-11.2, -4.6, TRANSLATION_NEUTRAL_ELEMENT];
+    ankleTranslation = [5, 4.07, 1];
+    ankleRotation = [ROTATION_NEUTRAL_ELEMENT, -70, ROTATION_NEUTRAL_ELEMENT];
+    
+    scale(scalation) 
+        translate(translation) 
+            union() {
+                translate(ankleTranslation) 
+                    rotate(ankleRotation) 
+                        ankle();
+                
+                foot();
+            }
 }
