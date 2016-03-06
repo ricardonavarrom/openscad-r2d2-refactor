@@ -1,8 +1,5 @@
-include <constants.scad> 
-
-function half(value) = value / 2;
-
-function changeSign(value) = value * -1;
+include <constants.scad>
+include <functions.scad>
 
 module head(radius, rotation) {
     translation = [2.47, TRANSLATION_NEUTRAL_ELEMENT, 31];
