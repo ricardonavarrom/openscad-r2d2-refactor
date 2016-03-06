@@ -103,8 +103,11 @@ module secondaryCameraLens() {
 }
 
 module secondaryCamera() {
-    translate([-6, -5, 43])
-        rotate([0, 20, 25]) 
+    translation = [-6, -5, 43];
+    rotation = [ROTATION_NEUTRAL_ELEMENT, 20, 25];
+    
+    translate(translation)
+        rotate(rotation) 
             union() {
                 secondaryCameraBody();
                 secondaryCameraLens();
