@@ -110,28 +110,32 @@ module perforatedHip() {
     }
 }
 
-module lateralLegTopInside() {
-    translate([0, 12, 27]) 
-        hip();
-            
+module lateralLegTopInside(rotation) {
     translate([-2, 11, 15])
-        rotate([0, -5, 0])
+        rotate(rotation)
             cube([6, 2, 10]);
 }
 
-module lateralLegTopOutside() {
+module lateralLegHipGroup() {
+    hipTranslation = [TRANSLATION_NEUTRAL_ELEMENT, 12, 27];
+    
     perforatedHip();
     
+    translate(hipTranslation) 
+        hip();
+}
+
+module lateralLegTopOutside(rotation) {
     translate([-1.8, 12, 29]) 
-        rotate([0, -5, 0])
+        rotate(rotation)
             cube([3, 4, 3]);
     
     translate([-1.8, 12, 13]) 
-        rotate([0, -5, 0]) 
+        rotate(rotation) 
             cube([6, 2, 14]);
 
     translate([-0.5, 12, 13])
-        rotate([0, -5, 0])
+        rotate(rotation)
             cube([3.5, 3, 18]);
 }
 
@@ -185,8 +189,11 @@ module lateralLegBottom() {
 }
 
 module lateralLegTop() {
-    lateralLegTopInside();
-    lateralLegTopOutside(); 
+    rotation = [ROTATION_NEUTRAL_ELEMENT, -5, ROTATION_NEUTRAL_ELEMENT];
+    
+    lateralLegHipGroup();
+    lateralLegTopInside(rotation);
+    lateralLegTopOutside(rotation); 
 }
 
 module lateralLeg() {
