@@ -257,17 +257,20 @@ module lateralLegAnkle() {
             ankle();
 }
 
-module rightLeg() {
-    union() {
-        insideLeg();
-        outsideLeg();
-                
-        scale([1.41, 1.41, 1.41]) 
+module lateralBottomLeg() {
+    scale([1.41, 1.41, 1.41]) 
             translate([-4, 4, 0]) 
                 union() {
                     lateralLegAnkle();
                     lateralLegFoot();
                 }
+}
+
+module rightLeg() {
+    union() {
+        insideLeg();
+        outsideLeg();  
+        lateralBottomLeg();
     }
 }
 
@@ -278,13 +281,7 @@ module leftLeg() {
         union() {
             insideLeg();
             outsideLeg();
-    
-            scale([1.41, 1.41, 1.41]) 
-                translate([-4, 4, 0]) 
-                    union() {
-                        lateralLegAnkle();
-                        lateralLegFoot();
-                    }
+            lateralBottomLeg();
         }
 }
 
