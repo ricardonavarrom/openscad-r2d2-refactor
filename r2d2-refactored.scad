@@ -171,7 +171,7 @@ module frontLeg() {
             }
 }
 
-module insideLeg() {
+module lateralLegTopInside() {
     translate([0, 12, 27]) 
         rotate([0, -5, 0]) 
             intersection() {
@@ -198,7 +198,7 @@ module insideLeg() {
             cube([6, 2, 10]);
 }
 
-module outsideLeg() {
+module lateralLegTopOutside() {
     difference () {
         translate([0, 13.8, 27])
             rotate([0, -5, 0])
@@ -257,7 +257,7 @@ module lateralLegAnkle() {
             ankle();
 }
 
-module lateralBottomLeg() {
+module lateralLegBottom() {
     scalation = [1.41, 1.41, 1.41];
     translation = [-4, 4, TRANSLATION_NEUTRAL_ELEMENT];
     
@@ -269,15 +269,15 @@ module lateralBottomLeg() {
             }
 }
 
-module topLateralLeg() {
-    insideLeg();
-    outsideLeg(); 
+module lateralLegTop() {
+    lateralLegTopInside();
+    lateralLegTopOutside(); 
 }
 
 module lateralLeg() {
     union() {
-        topLateralLeg();  
-        lateralBottomLeg();
+        lateralLegTop();  
+        lateralLegBottom();
     }
 }
 
