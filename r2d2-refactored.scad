@@ -136,14 +136,23 @@ module lateralLegTopOutside() {
 }
 
 module lateralLegKnee() {
-    scale([1.4, 1.2, 1]) 
-        rotate([0, -5, 0]) 
-            translate([-0.4, 9, 9]) 
+    sphereRadius = 3;
+    sphereScalation = [SCALATION_NEUTRAL_ELEMENT, SCALATION_NEUTRAL_ELEMENT, 1.5];
+    sphereTranslation = [2.5, 2.5, 2.5];
+    cubeSize = 5;
+    cubeTranslation = [-0.4, 9, 9];
+    cubeRotation = [ROTATION_NEUTRAL_ELEMENT, -5, ROTATION_NEUTRAL_ELEMENT];
+    cubeScalation = [1.4, 1.2, SCALATION_NEUTRAL_ELEMENT];
+    
+    scale(cubeScalation) 
+        rotate(cubeRotation) 
+            translate(cubeTranslation) 
                 intersection() {
-                    cube(5);
-                    translate([2.5, 2.5, 2.5]) 
-                        scale([1, 1, 1.5]) 
-                            sphere(3);
+                    cube(cubeSize);
+                    
+                    translate(sphereTranslation) 
+                        scale(sphereScalation) 
+                            sphere(sphereRadius);
                 }
 }
 
