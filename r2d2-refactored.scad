@@ -111,6 +111,12 @@ module secondaryCamera() {
             }
 }
 
+module ankle() {
+    dimensions = [6, 1.5, 2.5];
+    
+    cube(dimensions);
+}
+
 module foot() {
     difference() {
         cube([8, 8, 4]);
@@ -131,10 +137,6 @@ module foot() {
                 cube([9, 1.5, 1]);
         }	
     }
-}
-
-module ankle() {
-    cube([6, 1.5, 2.5]);
 }
 
 module frontLeg() {
