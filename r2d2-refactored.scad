@@ -61,19 +61,37 @@ module frontLeg() {
 }
 
 module hip() {
-    rotate([0, -5, 0])
+    sphereRadius = 4;
+    sphereScalation = [SCALATION_NEUTRAL_ELEMENT, SCALATION_NEUTRAL_ELEMENT, 1.6];
+    sphereTranslation = [TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT, 1];
+    
+    internalCylinderHeight = double(sphereRadius);
+    externalCylinderHeight = 3;
+    
+    intersectionScalation = [1.4, 1.4, 1.4];
+    
+    rotation = [ROTATION_NEUTRAL_ELEMENT, -5, ROTATION_NEUTRAL_ELEMENT];
+    cubeTranslation = [changeSign(sphereRadius), -1, changeSign(double(sphereRadius))];
+    cubeDimensions = [double(sphereRadius), half(sphereRadius), 20];
+    cylinderTranslation = [TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT, -2];
+    externalCylinderTopRadius = 4.6;
+    
+    rotate(rotation)
         intersection() {
-            translate([-4, -1, -8])
-                cube([8, 2, 20]);
+            translate(cubeTranslation)
+                cube(cubeDimensions);
+            
             union() {
-                translate([0, 0, -2]) 
-                    cylinder(3, 3, 4.6);
-                scale([1.4, 1.4, 1.4])
+                translate(cylinderTranslation) 
+                    cylinder(externalCylinderHeight, externalCylinderHeight, externalCylinderTopRadius);
+                
+                scale(intersectionScalation)
                     intersection() {
-                        cylinder(8, 3, 3);
-                        translate([0, 0, 1]) 
-                            scale([1, 1, 1.6])
-                                sphere(4);
+                        cylinder(internalCylinderHeight, externalCylinderHeight, externalCylinderHeight);
+                        
+                        translate(sphereTranslation) 
+                            scale(sphereScalation)
+                                sphere(sphereRadius);
                     }
             }
         }
