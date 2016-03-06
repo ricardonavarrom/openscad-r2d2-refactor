@@ -198,6 +198,18 @@ module lateralLegTopInside() {
             cube([6, 2, 10]);
 }
 
+module lateralLegKnee() {
+    scale([1.4, 1.2, 1]) 
+        rotate([0, -5, 0]) 
+            translate([-0.4, 9, 9]) 
+                intersection() {
+                    cube(5);
+                    translate([2.5, 2.5, 2.5]) 
+                        scale([1, 1, 1.5]) 
+                            sphere(3);
+                }
+}
+
 module lateralLegTopOutside() {
     difference () {
         translate([0, 13.8, 27])
@@ -221,24 +233,20 @@ module lateralLegTopOutside() {
                 rotate([90, -5, 0]) 
                     cylinder(4, 2, 2);
     }
+    
     translate([-1.8, 12, 29]) 
         rotate([0, -5, 0])
             cube([3, 4, 3]);
+    
     translate([-1.8, 12, 13]) 
         rotate([0, -5, 0]) 
             cube([6, 2, 14]);
+
     translate([-0.5, 12, 13])
         rotate([0, -5, 0])
             cube([3.5, 3, 18]);
-    scale([1.4, 1.2, 1]) 
-        rotate([0, -5, 0]) 
-            translate([-0.4, 9, 9]) 
-                intersection() {
-                    cube(5);
-                    translate([2.5, 2.5, 2.5]) 
-                        scale([1, 1, 1.5]) 
-                            sphere(3);
-                }
+    
+    lateralLegKnee();
 }
 
 module lateralLegFoot() {
