@@ -121,22 +121,25 @@ module ankle() {
 }
 
 module foot() {
+    shoeSize = 8;
+    dimensions = [shoeSize, shoeSize, half(shoeSize)];
+    
     difference() {
-        cube([8, 8, 4]);
+        cube(dimensions);
         union() {
-            translate([-1, -8, 0])
-                rotate([-20, 0, 0])
+            translate([-1, changeSign(shoeSize), TRANSLATION_NEUTRAL_ELEMENT])
+                rotate([-20, ROTATION_NEUTRAL_ELEMENT, ROTATION_NEUTRAL_ELEMENT])
                     cube([10, 9, 9]);
-            translate([-1, 8, 0])
-                rotate([20, 0, 0]) 
+            translate([-1, shoeSize, TRANSLATION_NEUTRAL_ELEMENT])
+                rotate([20, ROTATION_NEUTRAL_ELEMENT, ROTATION_NEUTRAL_ELEMENT]) 
                     cube([10, 9, 9]);
-            translate([-10, 0, 0])
-                rotate([0, 20, 0])
+            translate([-10, TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT])
+                rotate([ROTATION_NEUTRAL_ELEMENT, 20, ROTATION_NEUTRAL_ELEMENT])
                     cube([10, 9, 9]);
-            translate([8, 0, 0])
-                rotate([0,- 20, 0]) 
+            translate([shoeSize, TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT])
+                rotate([ROTATION_NEUTRAL_ELEMENT,- 20, ROTATION_NEUTRAL_ELEMENT]) 
                     cube([10, 9, 9]);
-            translate([0, 4.1, 3.3])
+            translate([TRANSLATION_NEUTRAL_ELEMENT, 4.1, 3.3])
                 cube([9, 1.5, 1]);
         }	
     }
