@@ -153,6 +153,33 @@ module foot() {
     }
 }
 
+module insideLeg() {
+    translate([0, 12, 27]) 
+        rotate([0, -5, 0]) 
+            intersection() {
+                translate([-4, -1, -3])
+                    cube([8, 2, 25]);
+                
+                union() {
+                    translate([0, 0, -2])
+                        cylinder(3, 3, 4.6);
+                    
+                    scale([1.4, 1.4, 1.4])
+                        intersection() {
+                            cylinder(8, 3, 3);
+                            
+                            translate([0, 0, 1]) 
+                                scale([1, 1, 1.6])
+                                    sphere(4);
+                        }
+                }
+            }
+            
+    translate([-2, 11, 15])
+        rotate([0, -5, 0])
+            cube([6, 2, 10]);
+}
+
 module frontLeg() {
     scalation = [1.41, 1.41, 1.41];
     translation = [-11.2, -4.6, TRANSLATION_NEUTRAL_ELEMENT];
@@ -174,27 +201,7 @@ module rightLeg() {
     union() {
     //SIDE LEG #1
         
-        //INSIDE LEG
-        translate([0, 12, 27]) 
-            rotate([0, -5, 0]) 
-                intersection() {
-                    translate([-4, -1, -3])
-                        cube([8, 2, 25]);
-                    union() {
-                        translate([0, 0, -2])
-                            cylinder(3, 3, 4.6);
-                        scale([1.4, 1.4, 1.4])
-                            intersection() {
-                                cylinder(8, 3, 3);
-                                translate([0, 0, 1]) 
-                                    scale([1, 1, 1.6])
-                                        sphere(4);
-                            }
-                    }
-                }
-        translate([-2, 11, 15])
-                rotate([0, -5, 0])
-                    cube([6, 2, 10]);
+        insideLeg();
                 
                 
                 
@@ -262,27 +269,7 @@ module leftLeg() {
             union() {
                 //SIDE LEG #2
         
-                //INSIDE LEG
-                translate([0, 12, 27]) 
-                    rotate([0, -5, 0]) 
-                        intersection() {
-                            translate([-4, -1, -3]) 
-                                cube([8, 2, 25]);
-                            union() {
-                                translate([0, 0, -2]) 
-                                    cylinder(3, 3, 4.6);
-                                scale([1.4, 1.4, 1.4]) 
-                                    intersection() {
-                                        cylinder(8, 3, 3);
-                                        translate([0 ,0 ,1]) 
-                                            scale([1, 1, 1.6])
-                                                sphere(4);
-                                    }
-                            }
-                        }
-                translate([-2, 11, 15])
-                        rotate([0, -5, 0]) 
-                            cube([6, 2, 10]);
+                insideLeg();
         
                         
                 //OUTSIDE LEG
@@ -327,6 +314,10 @@ module leftLeg() {
                                         sphere(3);
                             }
                 
+                            
+                            
+                            
+
                 
                 //FOOT
                 scale([1.41, 1.41, 1.41]) 
