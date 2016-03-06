@@ -241,7 +241,7 @@ module outsideLeg() {
                 }
 }
 
-module lateralFoot() {
+module lateralLegFoot() {
     scalation = [1.2, 1.2, 1.2];
     
     scale(scalation) 
@@ -260,7 +260,7 @@ module rightLeg() {
                         rotate([0, 80, 0]) 
                             ankle();
                     
-                    lateralFoot();
+                    lateralLegFoot();
                 }
     }
 }
@@ -280,7 +280,7 @@ module leftLeg() {
                             rotate([0, 80, 0])
                                 ankle();
                         
-                        lateralFoot();
+                        lateralLegFoot();
                     }
         }
 }
