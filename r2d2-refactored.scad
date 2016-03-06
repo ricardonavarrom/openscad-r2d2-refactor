@@ -245,8 +245,6 @@ module lateralLegTopOutside() {
     translate([-0.5, 12, 13])
         rotate([0, -5, 0])
             cube([3.5, 3, 18]);
-    
-    lateralLegKnee();
 }
 
 module lateralLegFoot() {
@@ -284,7 +282,8 @@ module lateralLegTop() {
 
 module lateralLeg() {
     union() {
-        lateralLegTop();  
+        lateralLegTop(); 
+        lateralLegKnee(); 
         lateralLegBottom();
     }
 }
