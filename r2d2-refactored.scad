@@ -248,6 +248,15 @@ module lateralLegFoot() {
         foot();
 }
 
+module lateralLegAnkle() {
+    translation = [3.5, 5, 7];
+    rotation = [ROTATION_NEUTRAL_ELEMENT, 80, ROTATION_NEUTRAL_ELEMENT];
+    
+    translate(translation) 
+        rotate(rotation) 
+            ankle();
+}
+
 module rightLeg() {
     union() {
         insideLeg();
@@ -256,10 +265,7 @@ module rightLeg() {
         scale([1.41, 1.41, 1.41]) 
             translate([-4, 4, 0]) 
                 union() {
-                    translate([3.5, 5, 7]) 
-                        rotate([0, 80, 0]) 
-                            ankle();
-                    
+                    lateralLegAnkle();
                     lateralLegFoot();
                 }
     }
@@ -276,10 +282,7 @@ module leftLeg() {
             scale([1.41, 1.41, 1.41]) 
                 translate([-4, 4, 0]) 
                     union() {
-                        translate([3.5, 5, 7]) 
-                            rotate([0, 80, 0])
-                                ankle();
-                        
+                        lateralLegAnkle();
                         lateralLegFoot();
                     }
         }
