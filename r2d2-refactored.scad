@@ -130,15 +130,19 @@ module foot() {
             translate([-1, changeSign(shoeSize), TRANSLATION_NEUTRAL_ELEMENT])
                 rotate([-20, ROTATION_NEUTRAL_ELEMENT, ROTATION_NEUTRAL_ELEMENT])
                     cube([10, 9, 9]);
+            
             translate([-1, shoeSize, TRANSLATION_NEUTRAL_ELEMENT])
                 rotate([20, ROTATION_NEUTRAL_ELEMENT, ROTATION_NEUTRAL_ELEMENT]) 
                     cube([10, 9, 9]);
+            
             translate([-10, TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT])
                 rotate([ROTATION_NEUTRAL_ELEMENT, 20, ROTATION_NEUTRAL_ELEMENT])
                     cube([10, 9, 9]);
+            
             translate([shoeSize, TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT])
                 rotate([ROTATION_NEUTRAL_ELEMENT,- 20, ROTATION_NEUTRAL_ELEMENT]) 
                     cube([10, 9, 9]);
+            
             translate([TRANSLATION_NEUTRAL_ELEMENT, 4.1, 3.3])
                 cube([9, 1.5, 1]);
         }	
@@ -146,12 +150,18 @@ module foot() {
 }
 
 module frontLeg() {
-    scale([1.41, 1.41, 1.41]) 
-        translate([-11.2, -4.6, 0]) 
+    scalation = [1.41, 1.41, 1.41];
+    translation = [-11.2, -4.6, TRANSLATION_NEUTRAL_ELEMENT];
+    ankleTranslation = [5, 4.07, 1];
+    ankleRotation = [ROTATION_NEUTRAL_ELEMENT, -70, ROTATION_NEUTRAL_ELEMENT];
+    
+    scale(scalation) 
+        translate(translation) 
             union() {
-                translate([5, 4.07, 1]) 
-                    rotate([0, -70, 0]) 
+                translate(ankleTranslation) 
+                    rotate(ankleRotation) 
                         ankle();
+                
                 foot();
             }
 }
