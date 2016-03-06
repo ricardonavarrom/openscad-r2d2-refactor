@@ -269,10 +269,14 @@ module lateralBottomLeg() {
             }
 }
 
+module topLateralLeg() {
+    insideLeg();
+    outsideLeg(); 
+}
+
 module lateralLeg() {
     union() {
-        insideLeg();
-        outsideLeg();  
+        topLateralLeg();  
         lateralBottomLeg();
     }
 }
