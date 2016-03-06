@@ -64,17 +64,14 @@ module hip() {
     sphereRadius = 4;
     sphereScalation = [SCALATION_NEUTRAL_ELEMENT, SCALATION_NEUTRAL_ELEMENT, 1.6];
     sphereTranslation = [TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT, 1];
-    
     internalCylinderHeight = double(sphereRadius);
     externalCylinderHeight = 3;
-    
-    intersectionScalation = [1.4, 1.4, 1.4];
-    
-    rotation = [ROTATION_NEUTRAL_ELEMENT, -5, ROTATION_NEUTRAL_ELEMENT];
-    cubeTranslation = [changeSign(sphereRadius), -1, changeSign(double(sphereRadius))];
-    cubeDimensions = [double(sphereRadius), half(sphereRadius), 20];
-    cylinderTranslation = [TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT, -2];
     externalCylinderTopRadius = 4.6;
+    intersectionScalation = [1.4, 1.4, 1.4];
+    cylinderTranslation = [TRANSLATION_NEUTRAL_ELEMENT, TRANSLATION_NEUTRAL_ELEMENT, -2];
+    cubeDimensions = [double(sphereRadius), half(sphereRadius), 20];
+    cubeTranslation = [changeSign(sphereRadius), -1, changeSign(double(sphereRadius))];
+    rotation = [ROTATION_NEUTRAL_ELEMENT, -5, ROTATION_NEUTRAL_ELEMENT];
     
     rotate(rotation)
         intersection() {
@@ -98,12 +95,18 @@ module hip() {
 }
 
 module perforatedHip() {
+    cylinderHeight = 4;
+    perforationRotation = [QUARTER_ROTATION, -5, ROTATION_NEUTRAL_ELEMENT];
+    perforationTranslation = [-0.6, 18, 33];
+    hipTranslation = [TRANSLATION_NEUTRAL_ELEMENT, 13.8, 27];
+    
     difference () {
-        translate([0, 13.8, 27])
+        translate(hipTranslation)
             hip();
-        translate([-0.6, 18, 33])
-                rotate([90, -5, 0]) 
-                    cylinder(4, 2, 2);
+        
+        translate(perforationTranslation)
+                rotate(perforationRotation) 
+                    cylinder(cylinderHeight, half(cylinderHeight), half(cylinderHeight));
     }
 }
 
