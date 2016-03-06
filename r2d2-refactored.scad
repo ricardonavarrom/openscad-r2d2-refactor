@@ -1,8 +1,4 @@
-TRANSLATION_NEUTRAL_ELEMENT = 0;
-SCALATION_NEUTRAL_ELEMENT = 1;
-ROTATION_NEUTRAL_ELEMENT = 0;
-QUARTER_ROTATION = 90;
-HALF_ROTATION = 180;
+include <constants.scad> 
 
 function half(value) = value / 2;
 
