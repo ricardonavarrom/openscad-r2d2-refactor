@@ -269,7 +269,7 @@ module lateralBottomLeg() {
             }
 }
 
-module rightLeg() {
+module lateralLeg() {
     union() {
         insideLeg();
         outsideLeg();  
@@ -277,15 +277,15 @@ module rightLeg() {
     }
 }
 
+module rightLeg() {
+    lateralLeg();
+}
+
 module leftLeg() {
     rotation = [ROTATION_NEUTRAL_ELEMENT, ROTATION_NEUTRAL_ELEMENT, HALF_ROTATION];
     
     rotate(rotation) 
-        union() {
-            insideLeg();
-            outsideLeg();
-            lateralBottomLeg();
-        }
+        lateralLeg();
 }
 
 module r2d2() {
