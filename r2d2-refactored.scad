@@ -62,21 +62,31 @@ module frontLeg() {
 
 module hip() {
     rotate([0, -5, 0])
-                intersection() {
-                    translate([-4, -1, -8])
-                        cube([8, 2, 20]);
-                    union() {
-                        translate([0, 0, -2]) 
-                            cylinder(3, 3, 4.6);
-                        scale([1.4, 1.4, 1.4])
-                            intersection() {
-                                cylinder(8, 3, 3);
-                                translate([0, 0, 1]) 
-                                    scale([1, 1, 1.6])
-                                        sphere(4);
-                            }
+        intersection() {
+            translate([-4, -1, -8])
+                cube([8, 2, 20]);
+            union() {
+                translate([0, 0, -2]) 
+                    cylinder(3, 3, 4.6);
+                scale([1.4, 1.4, 1.4])
+                    intersection() {
+                        cylinder(8, 3, 3);
+                        translate([0, 0, 1]) 
+                            scale([1, 1, 1.6])
+                                sphere(4);
                     }
-                }
+            }
+        }
+}
+
+module perforatedHip() {
+    difference () {
+        translate([0, 13.8, 27])
+            hip();
+        translate([-0.6, 18, 33])
+                rotate([90, -5, 0]) 
+                    cylinder(4, 2, 2);
+    }
 }
 
 module lateralLegTopInside() {
@@ -89,13 +99,7 @@ module lateralLegTopInside() {
 }
 
 module lateralLegTopOutside() {
-    difference () {
-        translate([0, 13.8, 27])
-            hip();
-        translate([-0.6, 18, 33])
-                rotate([90, -5, 0]) 
-                    cylinder(4, 2, 2);
-    }
+    perforatedHip();
     
     translate([-1.8, 12, 29]) 
         rotate([0, -5, 0])
